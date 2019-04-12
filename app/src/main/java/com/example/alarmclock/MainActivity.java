@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run(){
-                Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
-                startActivity(homeIntent);
+                Intent alarmIntent = new Intent(MainActivity.this, AlarmActivity.class);
+                startActivity(alarmIntent);
                 finish();
             }
         },SPLASH_TIME_OUT);
