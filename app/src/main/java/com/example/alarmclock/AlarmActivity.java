@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -56,8 +55,8 @@ public class AlarmActivity extends Activity {
             Log.d("MyActivity", "Alarm Off");
         }
     }
-    /*public void changeToRingingScreen() {
-        Intent alarmRinging = new Intent(AlarmActivity.this, AlarmRinging.class);
+    public void changeToRingingScreen() {
+        Intent alarmRinging = new Intent(AlarmActivity.this, RingingActivity.class);
         startActivity(alarmRinging);
-    }*/
+    }
 }
