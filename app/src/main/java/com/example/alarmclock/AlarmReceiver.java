@@ -41,4 +41,23 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
 
         inst.changeToRingingScreen();
     }
+
+    /*public void play(){
+        if(mp == null) {
+            mp = (MediaPlayer) MediaPlayer.create(this, R.raw.alarm1);
+        }
+        mp.start();
+    }
+
+    public void pause() {
+        if (mp != null) {
+            mp.pause();
+        }
+    }
+
+    public void stopSong(View v) {
+        mp.stop();
+        mp=MediaPlayer.create(this, R.raw.alarm1);
+    }
+    */
 }
