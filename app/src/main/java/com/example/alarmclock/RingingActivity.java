@@ -19,6 +19,12 @@ import androidx.legacy.content.WakefulBroadcastReceiver;
 
 public class RingingActivity extends AppCompatActivity {
     private Button fish;
+    private static RingingActivity inst;
+    MediaPlayer mp;
+
+    public static RingingActivity instance() {
+        return inst;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +39,37 @@ public class RingingActivity extends AppCompatActivity {
                 openFish();
             }
         });
+        play();
+        mp.setLooping(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stop();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     public void openFish() {
         Intent intent = new Intent(this, FishActivity.class);
         startActivity(intent);
+    }
+
+    public void play(){
+        if(mp == null) {
+            mp = MediaPlayer.create(this, R.raw.alarm1);
+        }
+        mp.start();
+    }
+
+    public void stop() {
+            if (mp != null) {
+                mp.stop();
+                mp.release();
+                mp = null;
+            }
     }
 }

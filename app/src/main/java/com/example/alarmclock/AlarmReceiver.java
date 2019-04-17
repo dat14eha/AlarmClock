@@ -23,7 +23,7 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
         //this will update the UI with message
         AlarmActivity inst = AlarmActivity.instance();
 
-        //this will sound the alarm tone
+       /* //this will sound the alarm tone
         //this will sound the alarm once, if you wish to
         //raise alarm in loop continuously then use MediaPlayer and setLooping(true)
         Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
@@ -38,26 +38,12 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
                 AlarmService.class.getName());
         startWakefulService(context, (intent.setComponent(comp)));
         setResultCode(Activity.RESULT_OK);
-
+*/
         inst.changeToRingingScreen();
-    }
 
-    /*public void play(){
-        if(mp == null) {
-            mp = (MediaPlayer) MediaPlayer.create(this, R.raw.alarm1);
-        }
-        mp.start();
-    }
 
-    public void pause() {
-        if (mp != null) {
-            mp.pause();
-        }
-    }
 
-    public void stopSong(View v) {
-        mp.stop();
-        mp=MediaPlayer.create(this, R.raw.alarm1);
+
+
     }
-    */
 }
