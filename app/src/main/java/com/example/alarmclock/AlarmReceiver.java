@@ -8,8 +8,11 @@ import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.view.View;
 
 import androidx.legacy.content.WakefulBroadcastReceiver;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class AlarmReceiver extends WakefulBroadcastReceiver {
 
@@ -36,6 +39,6 @@ public class AlarmReceiver extends WakefulBroadcastReceiver {
         startWakefulService(context, (intent.setComponent(comp)));
         setResultCode(Activity.RESULT_OK);
 
-        inst.changeToRingingScreen();
+        //inst.changeToRingingScreen();
     }
 }

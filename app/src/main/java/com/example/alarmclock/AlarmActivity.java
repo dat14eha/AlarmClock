@@ -56,8 +56,8 @@ public class AlarmActivity extends Activity {
             Log.d("MyActivity", "Alarm Off");
         }
     }
-    public void changeToRingingScreen() {
+    /*public void changeToRingingScreen() {
         Intent alarmRinging = new Intent(AlarmActivity.this, AlarmRinging.class);
         startActivity(alarmRinging);
-    }
+    }*/
 }
