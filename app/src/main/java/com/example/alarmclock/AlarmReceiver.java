@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -12,11 +13,12 @@ import androidx.legacy.content.WakefulBroadcastReceiver;
 
 public class AlarmReceiver extends WakefulBroadcastReceiver {
 
+    private MediaPlayer mp;
+
     @Override
     public void onReceive(final Context context, Intent intent) {
         //this will update the UI with message
         AlarmActivity inst = AlarmActivity.instance();
-        inst.setAlarmText("Alarm! Wake up! Wake up!");
 
         //this will sound the alarm tone
         //this will sound the alarm once, if you wish to

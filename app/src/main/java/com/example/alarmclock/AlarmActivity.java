@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -50,14 +51,11 @@ public class AlarmActivity extends Activity {
             Intent myIntent = new Intent(AlarmActivity.this, AlarmReceiver.class);
             pendingIntent = PendingIntent.getBroadcast(AlarmActivity.this, 0, myIntent, 0);
             alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
+            Intent alarmRinging = new Intent(AlarmActivity.this, AlarmRinging.class);
+            startActivity(alarmRinging);
         } else {
             alarmManager.cancel(pendingIntent);
-            setAlarmText("");
             Log.d("MyActivity", "Alarm Off");
         }
-    }
-
-    public void setAlarmText(String alarmText) {
-        alarmTextView.setText(alarmText);
     }
 }
