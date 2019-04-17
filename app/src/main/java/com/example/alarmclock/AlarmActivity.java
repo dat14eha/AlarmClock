@@ -51,11 +51,13 @@ public class AlarmActivity extends Activity {
             Intent myIntent = new Intent(AlarmActivity.this, AlarmReceiver.class);
             pendingIntent = PendingIntent.getBroadcast(AlarmActivity.this, 0, myIntent, 0);
             alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
-            Intent alarmRinging = new Intent(AlarmActivity.this, AlarmRinging.class);
-            startActivity(alarmRinging);
         } else {
             alarmManager.cancel(pendingIntent);
             Log.d("MyActivity", "Alarm Off");
         }
+    }
+    public void changeToRingingScreen() {
+        Intent alarmRinging = new Intent(AlarmActivity.this, AlarmRinging.class);
+        startActivity(alarmRinging);
     }
 }
