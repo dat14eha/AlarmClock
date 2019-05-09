@@ -5,23 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fiskbakgrund"
+    android:id="@+id/alarm_ringing"
     tools:context=".RingingActivity">
-
-<!--    <Button
-        android:id="@+id/ShutDown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="Alarm off"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />  -->
 
     <com.ncorti.slidetoact.SlideToActView
         android:id="@+id/slide_to_unlock"
@@ -37,5 +22,14 @@
         app:outer_color="#90000000"
         app:text=""
         android:rotation="90"/>
+
+    <ImageView
+        android:id="@+id/worm"
+        android:layout_width="1000dp"
+        android:layout_height="1000dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/worm" />
 
 </RelativeLayout>
