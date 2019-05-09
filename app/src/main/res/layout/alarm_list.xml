@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="15dp">
+
+    <TextView
+        android:id="@+id/timeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dip"
+        android:paddingTop="10dp"
+        android:paddingLeft="20dip"
+        android:textSize="55dp"
+        tools:text="Time" />
+
+    <Button
+        android:id="@+id/deleteAlarm"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginLeft="180dp"
+        android:textColor="@color/white"
+        android:background="@drawable/delete_button"
+        android:onClick="deleteAlarm"/>
+
+    <Switch
+        android:id="@+id/onOffSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="33dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:switchMinWidth="50dp"
+        android:text=""
+        android:textSize="120px" />
+
+    <ToggleButton
+        android:layout_marginLeft="20dp"
+        android:id="@+id/toggleMonday"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="82dp"
+        android:textColor="@color/white"
+        android:textOff="M"
+        android:textOn="M"
+        android:background="@drawable/toggle_selector" />
+
+    <ToggleButton
+        android:id="@+id/toggleTuesday"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="82dp"
+        android:textColor="@color/white"
+        android:textOff="T"
+        android:textOn="T"
+        android:background="@drawable/toggle_selector"/>
+
+    <ToggleButton
+        android:id="@+id/toggleWednesday"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="82dp"
+        android:textColor="@color/white"
+        android:textOff="W"
+        android:textOn="W"
+        android:background="@drawable/toggle_selector"/>
+
+    <ToggleButton
+        android:id="@+id/toggleThursday"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="82dp"
+        android:textColor="@color/white"
+        android:textOff="T"
+        android:textOn="T"
+        android:background="@drawable/toggle_selector"/>
+
+    <ToggleButton
+        android:id="@+id/toggleFriday"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="82dp"
+        android:textColor="@color/white"
+        android:textOff="F"
+        android:textOn="F"
+        android:background="@drawable/toggle_selector"/>
+
+    <ToggleButton
+        android:id="@+id/toggleSaturday"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="220dp"
+        android:layout_marginTop="82dp"
+        android:textColor="@color/white"
+        android:textOff="S"
+        android:textOn="S"
+        android:background="@drawable/toggle_selector"/>
+
+    <ToggleButton
+        android:id="@+id/toggleSunday"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="260dp"
+        android:layout_marginTop="82dp"
+        android:textColor="@color/white"
+        android:textOff="S"
+        android:textOn="S"
+        android:background="@drawable/toggle_selector"/>
+
+</RelativeLayout>

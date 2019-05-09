@@ -17,4 +17,19 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="PreferenceScreen">
+        <item name="android:windowBackground">@color/colorPrimary</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textColorSecondary">@color/grey</item>
+        <item name="colorAccent">#ebebeb</item>
+    </style>
+
+    <style name="Theme.AppCompat.Translucent">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 </resources>
