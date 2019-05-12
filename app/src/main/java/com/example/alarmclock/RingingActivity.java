@@ -27,56 +27,25 @@ public class RingingActivity extends AppCompatActivity {
     private Button fish;
     private static RingingActivity inst;
     MediaPlayer mp;
-    // <p>
 
     public static RingingActivity instance() {
         return inst;
     }
 
-    SlideToActView slideToActView;
+    //SlideToActView slideToActView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_ringing);
         mainLayout = (RelativeLayout) findViewById(R.id.alarm_ringing);
-        image = (ImageView) findViewById(R.id.worm);
+        image = findViewById(R.id.worm);
 
         play();
         mp.setLooping(true);
 
         image.setOnTouchListener(onTouchListener());
     }
-    /**
-     <p>
-     slideToActView = (SlideToActView)findViewById(R.id.slide_to_unlock);
-     slideToActView.setOnSlideCompleteListener(new SlideToActView.OnSlideCompleteListener() {
-
-    @Override public void onSlideComplete(@NotNull SlideToActView slideToActView) {
-    openFish();
-    }
-    });
-     play();
-     mp.setLooping(true);
-     <p>
-     //RotateAnimation rotate= (RotateAnimation) AnimationUtils.loadAnimation(this,R.anim.rotateAnimation);
-     //slideToActView.setAnimation(rotate);
-     }
-     */
-
-    /**
-     * // Try to move worm
-     *
-     * @Override protected void onCreate(Bundle savedInstanceState) {
-     * super.onCreate(savedInstanceState);
-     * setContentView(R.layout.activity_alarm_ringing);
-     * <p>
-     * mainLayout = (RelativeLayout) findViewById(R.id.alarm_ringing);
-     * image = (ImageView) findViewById(R.id.worm);
-     * <p>
-     * image.setOnTouchListener(onTouchListener());
-     * }
-     */
 
     private View.OnTouchListener onTouchListener() {
         return new View.OnTouchListener() {
@@ -98,12 +67,6 @@ public class RingingActivity extends AppCompatActivity {
                         yDelta = y - lParams.topMargin;
                         break;
 
-                    case MotionEvent.ACTION_UP:
-                        Toast.makeText(RingingActivity.this,
-                                "I'm here!", Toast.LENGTH_SHORT)
-                                .show();
-                        break;
-
                     case MotionEvent.ACTION_MOVE:
                         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) view
                                 .getLayoutParams();
@@ -112,17 +75,16 @@ public class RingingActivity extends AppCompatActivity {
                         layoutParams.rightMargin = 0;
                         layoutParams.bottomMargin = 0;
                         view.setLayoutParams(layoutParams);
-                        if(y>1750 && x>600 && x<700) {
-                            openFish();
-                        }
                         break;
                 }
                 mainLayout.invalidate();
+                if(y>1700 && x>600 && x<700) {
+                    openFish();
+                }
                 return true;
             }
         };
     }
-//End try move worm
 
     @Override
     protected void onPause() {
