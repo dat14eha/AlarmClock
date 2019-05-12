@@ -8,25 +8,10 @@
     android:id="@+id/alarm_ringing"
     tools:context=".RingingActivity">
 
-    <com.ncorti.slidetoact.SlideToActView
-        android:id="@+id/slide_to_unlock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="391dp"
-        android:elevation="10dp"
-        app:area_margin="8dp"
-        app:inner_color="#424242"
-        app:outer_color="#90000000"
-        app:text=""
-        android:rotation="90"/>
-
     <ImageView
         android:id="@+id/worm"
-        android:layout_width="1000dp"
-        android:layout_height="1000dp"
+        android:layout_width="10000dp"
+        android:layout_height="10000dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:contentDescription="@string/app_name"
