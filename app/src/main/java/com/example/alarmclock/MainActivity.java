@@ -229,7 +229,7 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         // UPDATE VIEW BASED ON CHANGES.
         alarmAdapter.notifyDataSetChanged();
-        /*if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("testAlarm", true)) {
+        if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("testAlarm", true)) {
             FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
             fab2.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
             fab2.hide();
-        }*/
+        }
         super.onResume();
     }
 
@@ -263,7 +263,7 @@ public class MainActivity extends AppCompatActivity {
 
     // OPENS THE TEST ALARMACTIVITY.
     public void openAlarm(View v) {
-        Intent intent = new Intent(this, AlarmActivity.class);
+        Intent intent = new Intent(this, RingingActivity.class);
         startActivity(intent);
     }
 

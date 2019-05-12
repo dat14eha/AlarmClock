@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+   <!-- <PreferenceCategory android:title="Alarm Settings">
+
+        <RingtonePreference
+            android:key="ringtone_pref"
+            android:ringtoneType="all"
+            android:showDefault="true"
+            android:showSilent="false"
+            android:summary="Select your alarm sound"
+            android:title="Alarm Sound" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="vibrate_pref"
+            android:summary="Vibrate on alarm"
+            android:title="Vibrate" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="flash_pref"
+            android:summary="Flash on alarm"
+            android:title="Flash" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Snooze Settings">
+
+        <CheckBoxPreference
+            android:id="@+id/proximity"
+            android:defaultValue="true"
+            android:key="proximity"
+            android:summary="Approach the proximity sensor to snooze the alarm (always enabled)"
+            android:title="Proximity Mode"
+            android:enabled="false" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="fling"
+            android:summary="Make a flinging gesture in any direction on the screen to snooze the alarm"
+            android:title="Fling" />
+
+        <EditTextPreference
+            android:key="snooze_duration"
+            android:title="Snooze Duration"
+            android:summary="Set snooze duration (minutes)"
+            android:inputType="number"
+            android:defaultValue="5"
+            android:textColor="@color/white"
+            android:selectAllOnFocus="true"
+            />
+
+        <EditTextPreference
+            android:key="snooze_guard"
+            android:title="Snooze Guard"
+            android:summary="Set the amount of snoozes allowed"
+            android:inputType="number"
+            android:defaultValue="5"
+            android:textColor="@color/white"
+            android:selectAllOnFocus="true"
+            />
+
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Dismiss Settings">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:key="shake"
+            android:summary="Shake to dismiss the alarm (always enabled)"
+            android:title="Shake"
+            android:enabled="false" />
+
+        <EditTextPreference
+            android:key="dismiss_calibration"
+            android:title="Shake Calibration"
+            android:summary="Adjust the sensitivity of the shake (default value: 2500)"
+            android:inputType="number"
+            android:defaultValue="2500"
+            android:textColor="@color/white"
+            android:selectAllOnFocus="true"
+            />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="double_tap"
+            android:summary="Double tap on the screen to dismiss the alarm"
+            android:title="Double Tap" />
+
+    </PreferenceCategory> -->
+
+    <PreferenceCategory android:title="Debugging">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="testAlarm"
+            android:summary="Click this to enable a test alarm FAB on the main screen"
+            android:title="Test Alarm" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
