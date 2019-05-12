@@ -10,16 +10,12 @@ import android.media.MediaPlayer;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.ncorti.slidetoact.SlideToActView;
-
-import org.jetbrains.annotations.NotNull;
 
 public class RingingActivity extends AppCompatActivity {
     private ViewGroup mainLayout;
@@ -45,6 +41,9 @@ public class RingingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alarm_ringing);
         mainLayout = (RelativeLayout) findViewById(R.id.alarm_ringing);
         image = (ImageView) findViewById(R.id.worm);
+
+        play();
+        mp.setLooping(true);
 
         image.setOnTouchListener(onTouchListener());
     }

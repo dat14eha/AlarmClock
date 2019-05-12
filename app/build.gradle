@@ -30,11 +30,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
-<<<<<<< Updated upstream
 
     implementation 'com.github.cortinico:slidetoact:v0.3.0'
-=======
     implementation 'com.google.code.gson:gson:2.8.5'
-
->>>>>>> Stashed changes
 }
