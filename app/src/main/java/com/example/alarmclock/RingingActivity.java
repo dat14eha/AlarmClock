@@ -112,6 +112,9 @@ public class RingingActivity extends AppCompatActivity {
                         layoutParams.rightMargin = 0;
                         layoutParams.bottomMargin = 0;
                         view.setLayoutParams(layoutParams);
+                        if(y>1750 && x>600 && x<700) {
+                            openFish();
+                        }
                         break;
                 }
                 mainLayout.invalidate();
