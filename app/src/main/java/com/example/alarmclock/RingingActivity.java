@@ -74,7 +74,7 @@ public class RingingActivity extends AppCompatActivity {
                         layoutParams.topMargin = y - yDelta;
                         layoutParams.rightMargin = 0;
                         layoutParams.bottomMargin = 0;
-                        if(y>1700 && x>600 && x<700) {
+                        if(y>1800 && x>500 && x<700) {
                             openFish();
                             return false;
                         }

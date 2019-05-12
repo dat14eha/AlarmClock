@@ -4,17 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fiskbakgrund"
+    android:background="@drawable/ringbakgrund"
     android:id="@+id/alarm_ringing"
     tools:context=".RingingActivity">
 
     <ImageView
         android:id="@+id/worm"
-        android:layout_width="10000dp"
-        android:layout_height="10000dp"
+        android:layout_width="1000dp"
+        android:layout_height="1000dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_marginLeft="39dp"
+        android:layout_marginTop="-128dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/worm" />
+
+    <ImageView
+        android:id="@+id/fish"
+        android:layout_width="408dp"
+        android:layout_height="287dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="444dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/fish" />
 
 </RelativeLayout>
