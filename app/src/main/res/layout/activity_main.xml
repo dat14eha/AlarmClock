@@ -31,14 +31,14 @@ tools:context=".MainActivity">
     android:layout_margin="30dp"
     app:srcCompat="@drawable/ic_add" />
 
-<!-- TEST ALARM BUTTON
+<!-- TEST ALARM BUTTON -->
 <com.google.android.material.floatingactionbutton.FloatingActionButton
     android:id="@+id/fab2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom|center"
     android:layout_margin="30dp"
-    app:srcCompat="@drawable/ic_test_alarm" /> -->
+    app:srcCompat="@drawable/ic_test_alarm" />
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
