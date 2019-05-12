@@ -1,6 +1,7 @@
 package com.example.alarmclock;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.TimePickerDialog;
 import android.os.Bundle;
@@ -48,18 +49,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
 
-
-
-        /*new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run(){
-                Intent alarmIntent = new Intent(MainActivity.this, AlarmActivity.class);
-                startActivity(alarmIntent);
-                finish();
-            }
-        },*/ //SPLASH_TIME_OUT);
+        // LOAD INITIAL PREFERENCE VALUES TO AVOID EVIL CRASHES.
+        PreferenceManager.setDefaultValues(this, R.xml.pref_settings, false);
 
         // CLOSE THE ACTIVITY IF WE'RE IN AN ANOTHER APP.
         if (getIntent().getBooleanExtra("EXIT", false)) {
@@ -71,8 +63,8 @@ public class MainActivity extends AppCompatActivity {
 
         // SETUP START PAGE VIEW.
         setContentView(R.layout.activity_main);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         listView = (ListView) findViewById(R.id.testView);
         listView.setAdapter(alarmAdapter);
         alarmAdapter.setView(MainActivity.this.listView);
@@ -274,6 +266,29 @@ public class MainActivity extends AppCompatActivity {
                 timeEndSetListener, theTime.get(Calendar.HOUR_OF_DAY),
                 theTime.get(Calendar.MINUTE), true);
         timePickerDialog.show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        // TODO:
+        // CODE TO CHANGE ACTIVITY HERE.
+        if (id == R.id.settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }
