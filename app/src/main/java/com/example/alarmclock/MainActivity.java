@@ -257,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
     public void openAlarm(View v) {
         Intent intent = new Intent(this, RingingActivity.class);
         startActivity(intent);
+        finish();
     }
 
     // OPENS THE TIME PICKER.

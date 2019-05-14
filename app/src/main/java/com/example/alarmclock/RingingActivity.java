@@ -73,7 +73,7 @@ public class RingingActivity extends AppCompatActivity {
                         layoutParams.rightMargin = 0;
                         layoutParams.bottomMargin = 0;
 
-                        if(worm.getTop()>fish.getTop()+300 && worm.getLeft()>fish.getLeft()) {
+                        if(worm.getTop()>fish.getTop()+200 && worm.getLeft()>fish.getLeft() -100) {
                             openFish();
                         }
                         view.setLayoutParams(layoutParams);
