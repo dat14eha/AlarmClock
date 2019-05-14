@@ -13,18 +13,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
-import com.ncorti.slidetoact.SlideToActView;
 
 public class RingingActivity extends AppCompatActivity {
     private ViewGroup mainLayout;
-    private ImageView image;
+    private ImageView worm;
+    private ImageView fish;
 
     private int xDelta;
     private int yDelta;
 
-    private Button fish;
     private static RingingActivity inst;
     MediaPlayer mp;
 
@@ -39,12 +36,13 @@ public class RingingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_ringing);
         mainLayout = (RelativeLayout) findViewById(R.id.alarm_ringing);
-        image = findViewById(R.id.worm);
+        worm = findViewById(R.id.worm);
+        fish = findViewById(R.id.fish);
 
         play();
         mp.setLooping(true);
 
-        image.setOnTouchListener(onTouchListener());
+        worm.setOnTouchListener(onTouchListener());
     }
 
     private View.OnTouchListener onTouchListener() {
@@ -74,9 +72,9 @@ public class RingingActivity extends AppCompatActivity {
                         layoutParams.topMargin = y - yDelta;
                         layoutParams.rightMargin = 0;
                         layoutParams.bottomMargin = 0;
-                        if(y>1800 && x>500 && x<700) {
+
+                        if(worm.getTop()>fish.getTop()+300 && worm.getLeft()>fish.getLeft()) {
                             openFish();
-                            return false;
                         }
                         view.setLayoutParams(layoutParams);
                         break;
@@ -85,6 +83,11 @@ public class RingingActivity extends AppCompatActivity {
                 return true;
             }
         };
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();  // Always call the superclass method first
     }
 
     @Override
@@ -100,6 +103,7 @@ public class RingingActivity extends AppCompatActivity {
 
     public void openFish() {
         Intent intent = new Intent(this, FishActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
     }
 
