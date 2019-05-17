@@ -3,6 +3,7 @@ package com.example.alarmclock;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.app.AlarmManager;
@@ -15,6 +16,7 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TimePicker;
@@ -43,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     public int alarmId;
     private SharedPreferences.Editor mEditor;
     private SharedPreferences mSettings;
+
+    private boolean fab3Clicked = true;
 
 
 
@@ -220,6 +224,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void onResume() {
         // UPDATE VIEW BASED ON CHANGES.
+        final Dialog settingsDialog = new Dialog(this);
+        settingsDialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        settingsDialog.setContentView(getLayoutInflater().inflate(R.layout.instructions
+                , null));
+
         alarmAdapter.notifyDataSetChanged();
         if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("testAlarm", true)) {
             FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
@@ -240,6 +249,13 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     //openAlarm(view);
+                    if(fab3Clicked) {
+                        settingsDialog.show();
+                        fab3Clicked = false;
+                    } else {
+                        settingsDialog.dismiss();
+                        fab3Clicked = true;
+                    }
                 }
             });
             fab3.show();
