@@ -90,6 +90,13 @@
             android:title="Double Tap" />
 
     </PreferenceCategory> -->
+    <PreferenceCategory android:title="Information settings">
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="infoFAB"
+        android:summary='Click this to enable "how to play" FAB on the main screen'
+        android:title="Information button" />
+    </PreferenceCategory>
 
     <PreferenceCategory android:title="Debugging">
         <CheckBoxPreference

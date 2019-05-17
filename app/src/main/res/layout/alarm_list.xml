@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="15dp">
+    android:paddingBottom="0dp">
 
     <TextView
         android:id="@+id/timeView"
@@ -19,11 +19,11 @@
         android:id="@+id/deleteAlarm"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="31dp"
         android:layout_marginLeft="180dp"
-        android:textColor="@color/white"
+        android:layout_marginTop="35dp"
         android:background="@drawable/delete_button"
-        android:onClick="deleteAlarm"/>
+        android:onClick="deleteAlarm"
+        android:textColor="@color/white" />
 
     <Switch
         android:id="@+id/onOffSwitch"
@@ -35,7 +35,7 @@
         android:switchMinWidth="50dp"
         android:text=""
         android:textSize="120px" />
-
+    <!--
     <ToggleButton
         android:layout_marginLeft="20dp"
         android:id="@+id/toggleMonday"
@@ -133,5 +133,5 @@
         android:textOff="S"
         android:textOn="S"
         android:background="@drawable/toggle_selector"/>
-
+    -->
 </RelativeLayout>

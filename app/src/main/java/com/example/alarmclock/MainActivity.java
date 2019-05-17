@@ -234,6 +234,19 @@ public class MainActivity extends AppCompatActivity {
             FloatingActionButton fab2 = (FloatingActionButton) findViewById(R.id.fab2);
             fab2.hide();
         }
+        if (PreferenceManager.getDefaultSharedPreferences(getApplicationContext()).getBoolean("infoFAB", true)) {
+            FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+            fab3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //openAlarm(view);
+                }
+            });
+            fab3.show();
+        } else {
+            FloatingActionButton fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+            fab3.hide();
+        }
         super.onResume();
     }
 
