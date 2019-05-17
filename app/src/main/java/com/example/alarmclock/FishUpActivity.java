@@ -14,13 +14,14 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
     private Sensor mySensor;
     private SensorManager SM;
     private float[] gravity = new float[3];
+    private int correct = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fish_up);
 
-        SM = (SensorManager)getSystemService(SENSOR_SERVICE);
+        SM = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         // Accelerometer Sensor
         mySensor = SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -33,10 +34,15 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
     @Override
     public void onSensorChanged(SensorEvent event) {
         final float alpha = 0.8f;
-        if(buttonDown) {
-            gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
-            gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
-            gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
+        gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
+        gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
+        gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
+
+        if (gravity[0] < -20){
+            correct++;
+        }
+        if (correct >= 5) {
+            
         }
     }
 
@@ -45,7 +51,7 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
 
     }
 
-    public void vibrate(){
+    public void vibrate() {
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(200);
     }
