@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.app.Activity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
@@ -52,7 +52,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
     private Button startThrowGameButton;
     private boolean buttonDown = false;
 
-    private MediaPlayer mpSwoosh, mpSplash;
+    private MediaPlayer mpSwoosh, mpSplash, mpSuck, mpWrong;
     private TextView gyroText;
     private float[] gravity = new float[3];
     private float[] linear_acceleration = new float[3];
@@ -83,6 +83,8 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
         mpSplash = MediaPlayer.create(this, R.raw.rod_splah);
         mpSwoosh = MediaPlayer.create(this, R.raw.rod_swoosh);
+        mpSuck = MediaPlayer.create(this, R.raw.you_suck);
+        mpWrong = MediaPlayer.create(this, R.raw.wrong);
         // Accelerometer Sensor
         mySensor = SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
@@ -230,12 +232,16 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
             if(distance < 10){
                 testText.setTextSize(25);
                 testText.setText("Your big fish must be somewhere, THROW HARDER");
+                mpWrong.start();
+                mpWrong.setNextMediaPlayer(mpSuck);
             }else {
                 testText.setTextSize(25);
                 testText.setText("Distance thrown" + "\n" + String.format("%.2f", distance) + "meter");
                 startThrowGameButton.setVisibility(View.INVISIBLE);
                 mpSwoosh.start();
                 mpSwoosh.setNextMediaPlayer(mpSplash);
+        
+
                 Intent intent = new Intent(this, FishUpActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
