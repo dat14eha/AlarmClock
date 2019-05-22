@@ -39,6 +39,7 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.media.MediaPlayer;
 
 import java.util.ArrayList;
 
@@ -49,6 +50,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
     private Button startThrowGameButton;
     private boolean buttonDown = false;
 
+    MediaPlayer m;
     private TextView gyroText;
     private float[] gravity = new float[3];
     private float[] linear_acceleration = new float[3];
@@ -76,7 +78,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fish);
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
-
+        m = MediaPlayer.create(this, R.raw.rod_splah);
         // Accelerometer Sensor
         mySensor = SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
@@ -208,7 +210,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
         angle = 90 - Math.abs(((xAcc / totAcc) * 90));
         double throwTime = (values.size()*1.0)/100;
         Log.d("THROW", Double.toString(throwTime));
-        if(throwTime >= 0.1) {
+        if(throwTime >= 0.05) {
             velocity = (1.2 / throwTime )+ (xAcc / values.size() )* throwTime;
             yVelocity = velocity * Math.sin(Math.toRadians(angle));
             double maxHeightTime = yVelocity / 9.82;
@@ -220,9 +222,15 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
             if(Double.isNaN(distance)){
                 distance = 0.0;
             }
-            testText.setTextSize(25);
-            testText.setText("Distance thrown" + "\n" + String.format("%.2f", distance) + "meter");
-            startThrowGameButton.setVisibility(View.INVISIBLE);
+            if(distance < 10){
+                testText.setTextSize(25);
+                testText.setText("Your big fish must be somewhere, THROW HARDER");
+            }else {
+                testText.setTextSize(25);
+                testText.setText("Distance thrown" + "\n" + String.format("%.2f", distance) + "meter");
+                startThrowGameButton.setVisibility(View.INVISIBLE);
+                m.start();
+            }
         }else{
             testText.setTextSize(25);
             testText.setText("Hold the button longer during the throw");

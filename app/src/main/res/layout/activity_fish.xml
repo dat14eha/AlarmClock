@@ -25,7 +25,7 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_alignLeft="@+id/testText"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/testText"
         android:text="Hold"
         app:layout_constraintBottom_toBottomOf="parent"
