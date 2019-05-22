@@ -236,6 +236,9 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
                 startThrowGameButton.setVisibility(View.INVISIBLE);
                 mpSwoosh.start();
                 mpSwoosh.setNextMediaPlayer(mpSplash);
+                Intent intent = new Intent(this, FishUpActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
             }
         }else{
             testText.setTextSize(25);
