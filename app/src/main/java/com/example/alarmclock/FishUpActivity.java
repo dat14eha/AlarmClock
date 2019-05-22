@@ -40,6 +40,7 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
 
         if (gravity[0] < -20){
             correct++;
+            vibrate();
         }
         if (correct >= 5) {
 
