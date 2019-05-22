@@ -1,6 +1,8 @@
 package com.example.alarmclock;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.app.Activity;
 
@@ -50,7 +52,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
     private Button startThrowGameButton;
     private boolean buttonDown = false;
 
-    MediaPlayer m;
+    private MediaPlayer mpSwoosh, mpSplash;
     private TextView gyroText;
     private float[] gravity = new float[3];
     private float[] linear_acceleration = new float[3];
@@ -72,13 +74,15 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
     private double distance;
 
 
+    @SuppressLint("ResourceAsColor")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fish);
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
-        m = MediaPlayer.create(this, R.raw.rod_splah);
+        mpSplash = MediaPlayer.create(this, R.raw.rod_splah);
+        mpSwoosh = MediaPlayer.create(this, R.raw.rod_swoosh);
         // Accelerometer Sensor
         mySensor = SM.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
@@ -87,6 +91,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
         testText = (TextView)findViewById(R.id.testText);
 
         startThrowGameButton = findViewById(R.id.startThrowGameButton);
+        startThrowGameButton.setBackgroundColor(android.R.color.transparent);
         accValues = new ArrayList<float[]>();
 
         startThrowGameButton.setOnTouchListener(new View.OnTouchListener() {
@@ -229,7 +234,8 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
                 testText.setTextSize(25);
                 testText.setText("Distance thrown" + "\n" + String.format("%.2f", distance) + "meter");
                 startThrowGameButton.setVisibility(View.INVISIBLE);
-                m.start();
+                mpSwoosh.start();
+                mpSwoosh.setNextMediaPlayer(mpSplash);
             }
         }else{
             testText.setTextSize(25);
