@@ -8,6 +8,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Vibrator;
 
 public class FishUpActivity extends AppCompatActivity implements SensorEventListener {
@@ -15,6 +16,7 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
     private SensorManager SM;
     private float[] gravity = new float[3];
     private int correct = 0;
+    private Handler myHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,22 +30,30 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
 
         // Register sensor Listener
         SM.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
+
+        myHandler = new Handler();
     }
 
 
     @Override
     public void onSensorChanged(SensorEvent event) {
         final float alpha = 0.8f;
-        gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
+        gravity[0] = event.values[0];
         gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
         gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
 
-        if (gravity[0] < -20){
-            correct++;
+        while(correct < 5) {
             vibrate();
-        }
-        if (correct >= 5) {
+            if (gravity[0] < -15){
+                correct++;
+            }
+            myHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
 
+                }
+                //gotoState1();
+            }, 250);
         }
     }
 
