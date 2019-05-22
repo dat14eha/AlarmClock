@@ -42,7 +42,7 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
             correct++;
         }
         if (correct >= 5) {
-            
+
         }
     }
 
