@@ -3,6 +3,7 @@ package com.example.alarmclock;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -16,7 +17,6 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
     private SensorManager SM;
     private float[] gravity = new float[3];
     private int correct = 0;
-    private Handler myHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,30 +31,23 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
         // Register sensor Listener
         SM.registerListener(this, mySensor, SensorManager.SENSOR_DELAY_NORMAL);
 
-        myHandler = new Handler();
     }
 
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        final float alpha = 0.8f;
         gravity[0] = event.values[0];
-        gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
-        gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
 
-        while(correct < 5) {
-            vibrate();
-            if (gravity[0] < -15){
+            if (gravity[0] < -15) {
                 correct++;
+                vibrate();
             }
-            myHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
+        if(correct <5) {
 
-                }
-                //gotoState1();
-            }, 250);
         }
+        Intent intent = new Intent(this, FishDoneActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
     }
 
     @Override
