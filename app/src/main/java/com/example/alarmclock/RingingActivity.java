@@ -45,11 +45,6 @@ public class RingingActivity extends AppCompatActivity {
 
         play();
         mp.setLooping(true);
-        
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
 
         worm.setOnTouchListener(onTouchListener());
     }
@@ -121,6 +116,10 @@ public class RingingActivity extends AppCompatActivity {
         if (mp == null) {
             mp = MediaPlayer.create(this, R.raw.alarm1);
         }
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         mp.start();
     }
 
