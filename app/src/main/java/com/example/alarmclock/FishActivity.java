@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -65,7 +66,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
     private float angle;
     private double velocity;
     private double yVelocity;
-
+    private CountDownTimer cTimer = null;
 
     private Button throwButtonDone;
 
@@ -95,7 +96,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
         startThrowGameButton = findViewById(R.id.startThrowGameButton);
         startThrowGameButton.setBackgroundColor(android.R.color.transparent);
         accValues = new ArrayList<float[]>();
-
+        startTimer();
         startThrowGameButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -106,17 +107,18 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
                     zAcc = 0;
                     buttonDown = true;
                     vibrate();
+                    cancelTimer();
                     return true;
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     calcAngle(accValues);
                     buttonDown = false;
-
+                    startTimer();
                     vibrate();
                     return true;
                 }
                 return false;
-                }
-            });
+            }
+        });
         /*
                     if (event.getAction() == MotionEvent.ACTION_DOWN) {
                         accValues.clear();
@@ -176,7 +178,24 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
         }
     }
 
+    void startTimer() {
+        cTimer = new CountDownTimer(5000, 1000) {
+            public void onTick(long millisUntilFinished) {
+            }
+            public void onFinish() {
+                Intent alarmRinging = new Intent(FishActivity.this, RingingActivity.class);
+                startActivity(alarmRinging);
+            }
+        };
+        cTimer.start();
+    }
 
+
+    //cancel timer
+    void cancelTimer() {
+        if(cTimer!=null)
+            cTimer.cancel();
+    }
 
     public void vibrate(){
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -193,12 +212,12 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
     public void calcAngle(ArrayList<float[]> values){
         for(int i = 0; i < values.size(); i++){
 
-                if (values.get(i)[0] > 0 ) {
-                    xAcc += values.get(i)[0];
-                }
-                if (values.get(i)[1] > 0 ){
-                    yAcc += values.get(i)[1];
-                }
+            if (values.get(i)[0] > 0 ) {
+                xAcc += values.get(i)[0];
+            }
+            if (values.get(i)[1] > 0 ){
+                yAcc += values.get(i)[1];
+            }
 
         }
         //Should be divided by values.size() to get the average acceleration, but values will be to low.
@@ -233,16 +252,15 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
                 testText.setTextSize(25);
                 testText.setText("Your big fish must be somewhere, THROW HARDER");
                 mpWrong.start();
-                mpWrong.setNextMediaPlayer(mpSuck);
+
             }else {
                 mpWrong.stop();
-
                 testText.setTextSize(25);
                 testText.setText("Distance thrown" + "\n" + String.format("%.2f", distance) + "meter");
                 startThrowGameButton.setVisibility(View.INVISIBLE);
                 mpSwoosh.start();
                 mpSwoosh.setNextMediaPlayer(mpSplash);
-        
+
 
                 Intent intent = new Intent(this, FishUpActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -257,4 +275,3 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
     }
 
 }
-
