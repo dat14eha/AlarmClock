@@ -4,9 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ringbakgrund"
     android:id="@+id/alarm_ringing"
     tools:context=".RingingActivity">
+
+    <ImageView
+        android:id="@+id/backgroudview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/worm"
@@ -29,5 +36,7 @@
         android:layout_marginTop="444dp"
         android:contentDescription="@string/app_name"
         android:src="@drawable/fish" />
+
+
 
 </RelativeLayout>

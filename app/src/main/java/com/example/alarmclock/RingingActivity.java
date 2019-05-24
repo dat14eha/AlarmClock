@@ -1,29 +1,29 @@
 package com.example.alarmclock;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.app.KeyguardManager;
-import android.content.Context;
-import android.os.Bundle;
-
 import android.content.Intent;
 import android.media.MediaPlayer;
-import android.os.PowerManager;
+import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
+
+
 
 public class RingingActivity extends AppCompatActivity {
     private ViewGroup mainLayout;
     private ImageView worm;
     private ImageView fish;
+    private ImageView panel_IMG_back;
 
     private int xDelta;
     private int yDelta;
@@ -40,6 +40,11 @@ public class RingingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_ringing);
         mainLayout = (RelativeLayout) findViewById(R.id.alarm_ringing);
+        panel_IMG_back = (ImageView) findViewById(R.id.backgroudview);
+        Glide
+                .with(this)
+                .load(R.drawable.ringbakgrund)
+                        .into(panel_IMG_back);
         worm = findViewById(R.id.worm);
         fish = findViewById(R.id.fish);
 

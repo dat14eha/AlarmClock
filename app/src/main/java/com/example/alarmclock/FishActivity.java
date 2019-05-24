@@ -112,7 +112,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
                 } else if (event.getAction() == MotionEvent.ACTION_UP) {
                     calcAngle(accValues);
                     buttonDown = false;
-                    startTimer();
+
                     vibrate();
                     return true;
                 }
@@ -192,7 +192,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
 
 
     //cancel timer
-    void cancelTimer() {
+    public void cancelTimer() {
         if(cTimer!=null)
             cTimer.cancel();
     }
@@ -251,10 +251,13 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
             if(distance < 10){
                 testText.setTextSize(25);
                 testText.setText("Your big fish must be somewhere, THROW HARDER");
+                startTimer();
                 mpWrong.start();
 
             }else {
                 mpWrong.stop();
+
+                cancelTimer();
                 testText.setTextSize(25);
                 testText.setText("Distance thrown" + "\n" + String.format("%.2f", distance) + "meter");
                 startThrowGameButton.setVisibility(View.INVISIBLE);
