@@ -107,6 +107,7 @@ public class RingingActivity extends AppCompatActivity {
         Intent intent = new Intent(this, FishActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
+        finish();
     }
 
     public void play() {

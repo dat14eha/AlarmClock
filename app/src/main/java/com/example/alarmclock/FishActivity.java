@@ -235,6 +235,8 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
                 mpWrong.start();
                 mpWrong.setNextMediaPlayer(mpSuck);
             }else {
+                mpWrong.stop();
+
                 testText.setTextSize(25);
                 testText.setText("Distance thrown" + "\n" + String.format("%.2f", distance) + "meter");
                 startThrowGameButton.setVisibility(View.INVISIBLE);
@@ -245,6 +247,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
                 Intent intent = new Intent(this, FishUpActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 startActivity(intent);
+                finish();
             }
         }else{
             testText.setTextSize(25);

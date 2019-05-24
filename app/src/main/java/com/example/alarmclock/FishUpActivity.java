@@ -38,16 +38,17 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
     public void onSensorChanged(SensorEvent event) {
         gravity[0] = event.values[0];
 
-            if (gravity[0] < -15) {
-                correct++;
-                vibrate();
-            }
-        if(correct <5) {
-
+        if (gravity[0] < -15) {
+            correct++;
+            vibrate();
         }
-        Intent intent = new Intent(this, FishDoneActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(intent);
+        if (correct >= 10) {
+            correct = 0;
+            Intent intent = new Intent(this, FishDoneActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @Override
