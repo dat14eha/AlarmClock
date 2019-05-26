@@ -80,6 +80,9 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        stopService(new Intent(this, SoundService.class));
+
         setContentView(R.layout.activity_fish);
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
         mpSplash = MediaPlayer.create(this, R.raw.rod_splah);
