@@ -251,7 +251,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
             if(Double.isNaN(distance)){
                 distance = 0.0;
             }
-            if(distance < 10){
+            if(distance < 7){
                 testText.setTextSize(25);
                 testText.setText("Your big fish must be somewhere, THROW HARDER");
                 startTimer();
