@@ -1,7 +1,7 @@
 package com.example.alarmclock;
 
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.os.Handler;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.app.Activity;
@@ -262,16 +262,23 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
 
                 cancelTimer();
                 testText.setTextSize(25);
-                testText.setText("Distance thrown" + "\n" + String.format("%.2f", distance) + "meter");
+                testText.setText("Woho, successful throw! \n"+ String.format("%.2f", distance) + "meter");
                 startThrowGameButton.setVisibility(View.INVISIBLE);
                 mpSwoosh.start();
                 mpSwoosh.setNextMediaPlayer(mpSplash);
+                final Intent intent = new Intent(this, FishUpActivity.class);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
 
 
-                Intent intent = new Intent(this, FishUpActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                startActivity(intent);
-                finish();
+                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    }
+                }, 2500);
+
+
+
             }
         }else{
             testText.setTextSize(25);
