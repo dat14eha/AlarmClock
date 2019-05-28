@@ -262,7 +262,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
 
                 cancelTimer();
                 testText.setTextSize(25);
-                testText.setText("Woho, successful throw! \n"+ String.format("%.2f", distance) + "meter");
+                testText.setText("Successful throw! \n"+ String.format("%.2f", distance) + "meter");
                 startThrowGameButton.setVisibility(View.INVISIBLE);
                 mpSwoosh.start();
                 mpSwoosh.setNextMediaPlayer(mpSplash);
