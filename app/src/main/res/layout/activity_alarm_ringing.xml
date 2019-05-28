@@ -10,31 +10,37 @@
     <ImageView
         android:id="@+id/backgroudview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
         android:scaleType="fitXY"/>
 
     <ImageView
         android:id="@+id/worm"
-        android:layout_width="1000dp"
-        android:layout_height="1000dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="39dp"
-        android:layout_marginTop="-128dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/worm" />
-
+        android:src="@drawable/worm"
+        android:layout_alignLeft="@id/fish"
+        android:layout_alignRight="@id/fish"
+        />
     <ImageView
         android:id="@+id/fish"
-        android:layout_width="408dp"
-        android:layout_height="287dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="0dp"
-        android:layout_marginTop="444dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+
+
         android:contentDescription="@string/app_name"
+        android:scaleType="fitEnd"
         android:src="@drawable/fish" />
 
 

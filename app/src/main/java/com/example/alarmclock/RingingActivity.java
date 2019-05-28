@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +48,9 @@ public class RingingActivity extends AppCompatActivity {
                 .load(R.drawable.ringbakgrund)
                         .into(panel_IMG_back);
         worm = findViewById(R.id.worm);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        worm.getLayoutParams().height = displayMetrics.widthPixels;
         fish = findViewById(R.id.fish);
 
         play();
@@ -82,7 +87,10 @@ public class RingingActivity extends AppCompatActivity {
                         layoutParams.rightMargin = 0;
                         layoutParams.bottomMargin = 0;
 
-                        if(worm.getTop()>fish.getTop()+200 && worm.getLeft()>fish.getLeft() -300) {
+                        if(worm.getTop()>(fish.getHeight()-fish.getHeight()/3) &&(
+                                (worm.getLeft()>(fish.getLeft()-fish.getLeft()*3)
+                                       )&&(worm.getLeft()<(fish.getLeft()+fish.getLeft()*3)))){
+
                             openFish();
                         }
                         view.setLayoutParams(layoutParams);
