@@ -8,28 +8,28 @@ import android.os.IBinder;
 import androidx.annotation.Nullable;
 
 public class SoundService extends Service {
-    MediaPlayer mp;
+    private MediaPlayer mp;
 
     public SoundService() {
     }
-
-    public void onCreate()
-    {
-        mp = MediaPlayer.create(this, R.raw.alarm1);
-        mp.setLooping(false);
-    }
-    public void onDestroy()
-    {
-        mp.stop();
-    }
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
 
-    public void onStart(Intent intent,int startid){
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        mp = MediaPlayer.create(this, R.raw.alarm1);
+        mp.setLooping(true);
         mp.start();
+        return START_STICKY;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        mp.stop();
     }
 }

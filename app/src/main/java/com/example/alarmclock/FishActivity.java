@@ -80,6 +80,9 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        stopService(new Intent(this, SoundService.class));
+
         setContentView(R.layout.activity_fish);
         SM = (SensorManager)getSystemService(SENSOR_SERVICE);
         mpSplash = MediaPlayer.create(this, R.raw.rod_splah);
@@ -248,7 +251,7 @@ public class FishActivity extends AppCompatActivity  implements SensorEventListe
             if(Double.isNaN(distance)){
                 distance = 0.0;
             }
-            if(distance < 10){
+            if(distance < 7){
                 testText.setTextSize(25);
                 testText.setText("Your big fish must be somewhere, THROW HARDER");
                 startTimer();
