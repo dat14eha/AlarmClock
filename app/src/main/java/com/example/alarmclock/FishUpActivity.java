@@ -21,6 +21,7 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
     private float[] gravity = new float[3];
     private int correct = 0;
     private ImageView panel_IMG_back;
+    private  Vibrator v;
 
 
     @Override
@@ -40,6 +41,7 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
                 .load(R.drawable.catchfish)
                 .into(panel_IMG_back);
 
+        v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
     }
 
 
@@ -61,12 +63,17 @@ public class FishUpActivity extends AppCompatActivity implements SensorEventList
     }
 
     @Override
+    protected void onStop() {
+        super.onStop();
+        v.cancel();
+    }
+
+    @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
 
     public void vibrate() {
-        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(400);
     }
 }
